@@ -1,0 +1,92 @@
+# This file will be used to generate all of the schema-*.json files in a bundle
+schema: draft-07
+name: "k8s-elasticsearch"
+description: "Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data for lightning fast search, fine‑tuned relevancy, and powerful analytics that scale with ease."
+ref: github.com/massdriver-cloud/k8s-elasticsearch
+access: "private"
+type: "bundle"
+
+steps:
+  - path: src
+    provisioner: terraform
+
+params:
+  # examples:
+  #   - __name: Development
+  #     instance_configuration:
+  #       storage: 10
+  #       cpu_limit: 0.5
+  #       memory_limit_gib: 2
+  #     replica_configuration:
+  #       replicas: 0
+  #   - __name: Production
+  #     instance_configuration:
+  #       storage: 50
+  #       cpu_limit: 4.2
+  #       memory_limit_gib: 8
+  #     replica_configuration:
+  #       replicas: 2
+  # required:
+  #   - instance_configuration
+  #   - replica_configuration
+  properties: {}
+    # instance_configuration:
+    #   type: object
+    #   title: Instance Configuration
+    #   properties:
+    #     storage:
+    #       type: integer
+    #       title: Storage Size
+    #       description: The size (in GiB) of the PVC to request. Must be an integer between 10 and 1000.
+    #       minimum: 10
+    #       maximum: 1000
+    #     cpu_limit:
+    #       type: number
+    #       title: CPU Limit
+    #       description: Unit is in CPUs. Decimal numbers are allowed (3 digits of precision). Value must be between 0.001 and 32.
+    #       minimum: 0.001
+    #       maximum: 32
+    #     memory_limit_gib:
+    #       type: number
+    #       title: Memory Limit
+    #       description: Unit is Gi. Decimal numbers are allowed. Value must be between 0.5 and 64
+    #       minimum: 0.5
+    #       maximum: 64
+    # replica_configuration:
+    #   type: object
+    #   title: Replica Configuration
+    #   description: 
+    #   properties:
+    #     replicas:
+    #       type: integer
+    #       title: Read Replicas
+    #       description: Number of read replicas to create. Must be an integer between 0 and 5.
+    #       minimum: 0
+    #       maximum: 5
+
+connections:
+  required:
+    - kubernetes_cluster
+  properties:
+    kubernetes_cluster:
+      $ref: massdriver/kubernetes-cluster
+
+artifacts:
+  # required:
+  #   - es_authentication
+  properties: {}
+    # es_authentication:
+    #   $ref: massdriver/es-authentication
+
+ui: {}
+  # ui:order:
+  #   - instance_configuration
+  #   - replica_configuration
+  # instance_configuration:
+  #   ui:order:
+  #     - storage
+  #     - cpu_limit
+  #     - memory_limit_gib
+  # replica_configuration:
+  #   ui:order:
+  #     - replicas
