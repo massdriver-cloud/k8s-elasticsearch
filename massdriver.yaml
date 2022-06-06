@@ -1,7 +1,7 @@
 # This file will be used to generate all of the schema-*.json files in a bundle
 schema: draft-07
 name: "k8s-elasticsearch"
-description: "Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data for lightning fast search, fine‑tuned relevancy, and powerful analytics that scale with ease."
+description: "Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases."
 ref: github.com/massdriver-cloud/k8s-elasticsearch
 access: "private"
 type: "bundle"
