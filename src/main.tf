@@ -1,6 +1,6 @@
 locals {
-  chart_version = "8.1.0"
-  es_version    = "8.1.0"
+  chart_version = "7.17.1"
+  es_version    = "8.2.2"
   release       = var.md_metadata.name_prefix
 }
 
