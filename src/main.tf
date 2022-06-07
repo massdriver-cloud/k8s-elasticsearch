@@ -14,7 +14,7 @@ resource "helm_release" "elasticsearch" {
   chart            = "elasticsearch"
   repository       = "https://helm.elastic.co"
   version          = local.chart_version
-  namespace        = "Elasticsearch" # var.namespace
+  namespace        = "elasticsearch" # var.namespace
   create_namespace = true
 
   # values = [
