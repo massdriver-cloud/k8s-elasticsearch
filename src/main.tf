@@ -5,7 +5,7 @@ locals {
 }
 
 # resource "random_password" "es_secret" {
-#   length  = 10
+#   length  = 16
 #   special = false
 # }
 
