@@ -5,7 +5,7 @@ locals {
 }
 
 # resource "random_password" "es_secret" {
-#   length  = 10
+#   length  = 16
 #   special = false
 # }
 
@@ -14,7 +14,7 @@ resource "helm_release" "elasticsearch" {
   chart            = "elasticsearch"
   repository       = "https://helm.elastic.co"
   version          = local.chart_version
-  namespace        = "elasticsearch" # var.namespace
+  namespace        = "elasticsearch"
   create_namespace = true
 
   # values = [
