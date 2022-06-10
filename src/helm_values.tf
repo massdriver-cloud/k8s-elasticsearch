@@ -1,6 +1,6 @@
 # locals {
 #   helm_values = {
-#     commonLabels = var.md_metadata.default_tags
+#     labels = var.md_metadata.default_tags
 #     resources = {
 #       requests = {
 #         cpu    = "${var.instance_configuration.cpu_limit}m"
