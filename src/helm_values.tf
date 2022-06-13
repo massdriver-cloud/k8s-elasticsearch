@@ -27,7 +27,7 @@ locals {
     }
     imageTag           = var.image_tag
     replicas           = var.replica_configuration.replicas
-    minimumMasterNodes = (var.replicas / 2) + 1
+    minimumMasterNodes = (var.replica_configuration.replicas / 2) + 1
     secret = {
       password = random_password.es_secret.result
     }
