@@ -5,7 +5,7 @@ locals {
 
     # The service that non master groups will try to connect to when joining the cluster
     # This should be set to clusterName + "-" + nodeGroup for your master group
-    masterService = "${var.md_metadata.name_prefix}-${local.nodeGroup}"
+    masterService = "${var.md_metadata.name_prefix}-master"
 
     labels = var.md_metadata.default_tags
     resources = {

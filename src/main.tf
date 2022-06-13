@@ -17,8 +17,8 @@ resource "helm_release" "elasticsearch" {
   namespace        = "elasticsearch"
   create_namespace = true
 
-  values = [
-    "${file("${path.module}/values.yaml")}",
-    yamlencode(local.helm_values)
-  ]
+  # values = [
+  #   "${file("${path.module}/values.yaml")}",
+  #   yamlencode(local.helm_values)
+  # ]
 }
