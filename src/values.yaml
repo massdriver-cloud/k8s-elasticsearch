@@ -1,31 +1,4 @@
 # https://github.com/elastic/helm-charts/tree/main/elasticsearch#installing
-
-#   ---
-# clusterName: "elasticsearch"                                                    ## var.md_nameprefix
-# nodeGroup: "master"                                                             ## create a local to hardcode master
-
-# # The service that non master groups will try to connect to when joining the cluster
-# # This should be set to clusterName + "-" + nodeGroup for your master group
-# masterService: ""                                                               ## calculated ${var.mdname}-${local.nodeGroup}
-
-# replicas: 3                                                                     ## param
-# minimumMasterNodes: 2                                                           ## calculated. replica ct /2 + 1 helmvalues
-
-# imageTag: "8.1.0"                                                               ## param enum
-
-# resources:                                                                      ## param
-#   requests:
-#     cpu: "1000m"
-#     memory: "2Gi"
-#   limits:
-#     cpu: "1000m"
-#     memory: "2Gi"
-
-# volumeClaimTemplate:
-#   resources:
-#     requests:
-#       storage: 30Gi                                                             ## param
-
 rbac:
   create: true
 
