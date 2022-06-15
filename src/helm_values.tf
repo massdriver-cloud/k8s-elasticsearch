@@ -10,11 +10,11 @@ locals {
     labels = var.md_metadata.default_tags
     resources = {
       requests = {
-        cpu    = "${var.instance_configuration.cpu_limit}m"
+        cpu    = "${var.instance_configuration.cpu_limit}"
         memory = "${var.instance_configuration.memory_limit}Gi"
       }
       limits = {
-        cpu    = "${var.instance_configuration.cpu_limit}m"
+        cpu    = "${var.instance_configuration.cpu_limit}"
         memory = "${var.instance_configuration.memory_limit}Gi"
       }
     }
@@ -25,11 +25,12 @@ locals {
         }
       }
     }
-    imageTag           = var.image_tag
+    namespace          = var.namespace
     replicas           = var.replica_configuration.replicas
     minimumMasterNodes = floor(var.replica_configuration.replicas / 2) + 1
-    secret = {
-      password = random_password.es_secret.result
+    extraEnvs = {
+      name  = "ELASTIC_PASSWORD"
+      value = random_password.es_secret.result
     }
   }
 }
