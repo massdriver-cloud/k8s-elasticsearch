@@ -1,6 +1,5 @@
 locals {
   chart_version = "7.17.1"
-  es_version    = "8.2.2"
   release       = var.md_metadata.name_prefix
 }
 
@@ -14,7 +13,7 @@ resource "helm_release" "elasticsearch" {
   chart            = "elasticsearch"
   repository       = "https://helm.elastic.co"
   version          = local.chart_version
-  namespace        = "elasticsearch"
+  namespace        = var.namespace
   create_namespace = true
 
   values = [
