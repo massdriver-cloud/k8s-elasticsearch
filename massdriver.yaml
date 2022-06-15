@@ -70,7 +70,6 @@ params:
     replica_configuration:
       type: object
       title: Replica Configuration
-      description: 
       properties:
         replicas:
           type: integer

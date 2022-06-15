@@ -5,7 +5,7 @@ locals {
 
     # The service that non master groups will try to connect to when joining the cluster
     # This should be set to clusterName + "-" + nodeGroup for your master group
-    masterService = "${var.md_metadata.name_prefix}-${local.nodeGroup}"
+    masterService = "${var.md_metadata.name_prefix}-master"
 
     labels = var.md_metadata.default_tags
     resources = {
@@ -27,7 +27,7 @@ locals {
     }
     imageTag           = var.image_tag
     replicas           = var.replica_configuration.replicas
-    minimumMasterNodes = (var.replicas / 2) + 1
+    minimumMasterNodes = floor(var.replica_configuration.replicas / 2) + 1
     secret = {
       password = random_password.es_secret.result
     }
