@@ -28,9 +28,9 @@ locals {
     namespace          = var.namespace
     replicas           = var.replica_configuration.replicas
     minimumMasterNodes = floor(var.replica_configuration.replicas / 2) + 1
-    extraEnvs = {
+    extraEnvs = [{
       name  = "ELASTIC_PASSWORD"
       value = random_password.es_secret.result
-    }
+    }]
   }
 }
