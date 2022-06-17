@@ -18,14 +18,14 @@ params:
         cpu_limit: 1
         memory_limit: 2
       replica_configuration:
-        replicas: 0
+        replicas: 1
     - __name: Production
       instance_configuration:
         storage: 50
         cpu_limit: 4
         memory_limit: 8
       replica_configuration:
-        replicas: 2
+        replicas: 3
   required:
     - namespace
     - instance_configuration
@@ -66,9 +66,9 @@ params:
       properties:
         replicas:
           type: integer
-          title: Read Replicas
-          description: Number of read replicas to create. Must be an integer between 0 and 5.
-          minimum: 0
+          title: Replicas
+          description: Number of replicas to create. Must be an integer between 1 and 5.
+          minimum: 1
           maximum: 5
 
 connections:
