@@ -1,18 +1,17 @@
-# k8s-elasticsearch
-
 Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data for lightning fast search, fine‑tuned relevancy, and powerful analytics that scale with ease.
 
-### Development
+## What Is A Bundle
 
-### Enabling Pre-commit
+Bundles are the basic building blocks of infrastructure, applications, and architectures in Massdriver. They are composed of Terraform modules or Helm charts. Read more [here](https://docs.massdriver.cloud/concepts/bundles).
 
-This repo includes Terraform pre-commit hooks.
+## Developing
 
-[Install precommmit](https://pre-commit.com/index.html#installation) on your system.
+### How To Develop A Bundle
 
-```shell
-mv pre-commit-config.yaml .pre-commit-config.yaml
-pre-commit install
-```
+To learn how to develop a bundle for Massdriver, check out our [bundle docs](https://docs.massdriver.cloud/bundles/development).
 
-Terraform hooks will now be run on each commit.
+### Contribution guidelines
+
+So you're interested in contributing to Massdriver Bundles?  Please refer to Massdriver's overall
+[contribution guidelines](https://docs.massdriver.cloud/bundles/contributing) to find out how you
+can help with existing bundles or open source your own bundle.
