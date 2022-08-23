@@ -1,9 +1,34 @@
-fail_fast: true
+---
+fail_fast: false
 repos:
-  - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.71.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
-    hooks:
-      - id: terraform_fmt
-      # - id: terraform_validate
-      # - id: terraform_docs
-      # - id: terrascan
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.74.1
+  hooks:
+  - id: terraform_fmt
+- repo: https://github.com/jaketf/jsonschema2md
+  rev: v0.9.0
+  hooks:
+  - id: jsonschema2md
+    name: jsonschema2md params
+    args:
+    - "./schema-params.json"
+    - "./README.md"
+    - "--token=PARAMS"
+    - "--omit-top-level-metadata"
+    pass_filenames: false
+  - id: jsonschema2md
+    name: jsonschema2md connections
+    args:
+    - "./schema-connections.json"
+    - "./README.md"
+    - "--token=CONNECTIONS"
+    - "--omit-top-level-metadata"
+    pass_filenames: false
+  - id: jsonschema2md
+    name: jsonschema2md artifacts
+    args:
+    - "./schema-artifacts.json"
+    - "./README.md"
+    - "--token=ARTIFACTS"
+    - "--omit-top-level-metadata"
+    pass_filenames: false
