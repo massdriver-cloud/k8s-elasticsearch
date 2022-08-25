@@ -5,10 +5,6 @@ ref: github.com/massdriver-cloud/k8s-elasticsearch
 access: "private"
 type: "bundle"
 
-steps:
-  - path: src
-    provisioner: terraform
-
 params:
   examples:
     - __name: Development
@@ -89,11 +85,14 @@ ui:
     - namespace
     - instance_configuration
     - replica_configuration
+    - "*"
   instance_configuration:
     ui:order:
       - storage
       - cpu_limit
       - memory_limit
+      - "*"
   replica_configuration:
     ui:order:
       - replicas
+      - "*"
