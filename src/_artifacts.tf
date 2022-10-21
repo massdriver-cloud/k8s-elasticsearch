@@ -2,7 +2,7 @@ locals {
   data_authentication = {
     username = "elastic"
     password = random_password.es_secret.result
-    hostname = "https://${local.release}.${var.namespace}.svc.cluster.local"
+    hostname = "${local.release}.${var.namespace}.svc.cluster.local"
     port     = 9200
   }
 }
