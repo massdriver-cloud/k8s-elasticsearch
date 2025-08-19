@@ -3,7 +3,6 @@ name: k8s-elasticsearch
 version: 1.0.0
 description: Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases.
 source_url: https://github.com/massdriver-cloud/k8s-elasticsearch
-type: application
 params:
   examples:
   - __name: Development
