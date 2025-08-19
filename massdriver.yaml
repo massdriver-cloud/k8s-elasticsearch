@@ -1,30 +1,30 @@
 schema: draft-07
-name: "k8s-elasticsearch"
-description: "Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases."
-source_url: github.com/massdriver-cloud/k8s-elasticsearch
-access: "private"
-type: "bundle"
-
+name: k8s-elasticsearch
+version: 1.0.0
+description: Elasticsearch is a distributed, RESTful search and analytics engine capable
+  of addressing a growing number of use cases.
+source_url: https://github.com/massdriver-cloud/k8s-elasticsearch
+type: application
 params:
   examples:
-    - __name: Development
-      instance_configuration:
-        storage: 10
-        cpu_limit: 1
-        memory_limit: 2
-      replica_configuration:
-        replicas: 1
-    - __name: Production
-      instance_configuration:
-        storage: 50
-        cpu_limit: 4
-        memory_limit: 8
-      replica_configuration:
-        replicas: 3
+  - __name: Development
+    instance_configuration:
+      storage: 10
+      cpu_limit: 1
+      memory_limit: 2
+    replica_configuration:
+      replicas: 1
+  - __name: Production
+    instance_configuration:
+      storage: 50
+      cpu_limit: 4
+      memory_limit: 8
+    replica_configuration:
+      replicas: 3
   required:
-    - namespace
-    - instance_configuration
-    - replica_configuration
+  - namespace
+  - instance_configuration
+  - replica_configuration
   properties:
     namespace:
       type: string
@@ -32,7 +32,8 @@ params:
       description: Choose a namespace for Elasticsearch.
       pattern: "^[a-z]{1,}[a-z0-9-]{0,62}$"
       message:
-        pattern: Namespace can only contain lowercase letters, numbers, and hyphens, with a max of 63 characters.
+        pattern: Namespace can only contain lowercase letters, numbers, and hyphens,
+          with a max of 63 characters.
     instance_configuration:
       type: object
       title: Instance Configuration
@@ -40,19 +41,22 @@ params:
         storage:
           type: integer
           title: Storage Size
-          description: The size (in GiB) of the Elasticsearch instance. Must be an integer between 10 and 1000.
+          description: The size (in GiB) of the Elasticsearch instance. Must be an
+            integer between 10 and 1000.
           minimum: 10
           maximum: 1000
         cpu_limit:
           type: number
           title: CPU Limit
-          description: Unit is in CPUs. Decimal numbers are allowed (3 digits of precision). Value must be between 0.5 and 32.
+          description: Unit is in CPUs. Decimal numbers are allowed (3 digits of precision).
+            Value must be between 0.5 and 32.
           minimum: 0.5
           maximum: 32
         memory_limit:
           type: number
           title: Memory Limit
-          description: Unit is Gi. Decimal numbers are allowed. Value must be between 0.5 and 64
+          description: Unit is Gi. Decimal numbers are allowed. Value must be between
+            0.5 and 64
           minimum: 0.5
           maximum: 64
     replica_configuration:
@@ -62,37 +66,41 @@ params:
         replicas:
           type: integer
           title: Replicas
-          description: Number of replicas to create. Must be an integer between 1 and 5.
+          description: Number of replicas to create. Must be an integer between 1
+            and 5.
           minimum: 1
           maximum: 5
-
 connections:
   required:
-    - kubernetes_cluster
+  - kubernetes_cluster
   properties:
     kubernetes_cluster:
-      $ref: massdriver/kubernetes-cluster
-
+      "$ref": massdriver/kubernetes-cluster
 artifacts:
   required:
-    - elasticsearch_authentication
+  - elasticsearch_authentication
   properties:
     elasticsearch_authentication:
-      $ref: massdriver/elasticsearch-authentication
-
+      "$ref": massdriver/elasticsearch-authentication
 ui:
   ui:order:
-    - namespace
-    - instance_configuration
-    - replica_configuration
-    - "*"
+  - namespace
+  - instance_configuration
+  - replica_configuration
+  - "*"
   instance_configuration:
     ui:order:
-      - storage
-      - cpu_limit
-      - memory_limit
-      - "*"
+    - storage
+    - cpu_limit
+    - memory_limit
+    - "*"
   replica_configuration:
     ui:order:
-      - replicas
-      - "*"
+    - replicas
+    - "*"
+steps:
+- path: src
+  provisioner: opentofu
+  config:
+    checkov:
+      enable: true
