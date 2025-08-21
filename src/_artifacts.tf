@@ -8,9 +8,8 @@ locals {
 }
 
 resource "massdriver_artifact" "authentication" {
-  field                = "elasticsearch_authentication"
-  provider_resource_id = "${var.namespace}/${local.data_authentication.hostname}"
-  name                 = "Elastic at ${var.namespace}/${local.data_authentication.hostname}"
+  field    = "elasticsearch_authentication"
+  name     = "Elastic at ${var.namespace}/${local.data_authentication.hostname}"
   artifact = jsonencode(
     {
       data = {
